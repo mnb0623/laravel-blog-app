@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// ブログ一覧画面を表示
+Route::get('/', 'App\Http\Controllers\BlogController@showList')->name('blogs');
+// !動画とはlaravelのバージョンが異なり記法が変わってる
+// https://qiita.com/norichintnk/items/34a04cd17bfe4014313a
