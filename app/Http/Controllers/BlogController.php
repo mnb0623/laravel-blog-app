@@ -53,8 +53,17 @@ class BlogController extends Controller
         // dd($request->all());
         // ブログのデータを受け取る
         $inputs = $request->all();
-        // ブログを登録
-        Blog::create($inputs);
+
+        \DB::beginTransaction();
+        try {
+            // ブログを登録
+            Blog::create($inputs);
+            \DB::commit();
+        } catch(\Throwable $e) {
+            \DB::rollback();
+            abort(500);
+        }
+
         \Session::flash('err_msg', 'ブログを登録しました。');
         return redirect(route('blogs'));
     }
