@@ -24,3 +24,7 @@ Route::post('/blog/store', 'App\Http\Controllers\BlogController@exeStore')->name
 // #8 ブログ詳細画面を表示
 // #8 これも動画とはバージョンが違うので記法が異なる
 Route::get('/blog/{id}', 'App\Http\Controllers\BlogController@showDetail')->name('show');
+// #11 ブログ編集画面を表示
+Route::get('/blog/edit/{id}', 'App\Http\Controllers\BlogController@showEdit')->name('edit');
+// #11 ポストされたらupdateする
+Route::post('/blog/update', 'App\Http\Controllers\BlogController@exeUpdate')->name('update');
